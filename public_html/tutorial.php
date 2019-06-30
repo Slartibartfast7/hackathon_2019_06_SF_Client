@@ -54,13 +54,118 @@
         $('#author').html(data[i].author);
         numberOfStars((data[i].ratings), '#ratings');
         $('#ratings').html(data[i].difficulty);
+
         $('#nodes').html("NODES : TODO AFFICHAGE "+data[i].nodes);
         $('#back').html("Return back");
+        draw(data[i].nodes);
       });
     })
     .fail(function() {
       console.log( "error" );
     });
+    </script>
+    <script type="text/javascript">
+
+      var nodes = null;
+      var edges = null;
+      var network = null;
+
+      nodes = [];
+      nodesFlags = [];
+      edges = [];
+
+      // Typical TUTORIAL2 functions
+      function getNodeById2(id) {
+        $.getJSON( ("https://hackathon.meteors.io/nodes/"+id), function( data ) {
+          var items = [];
+          $.each(data, function(i) {
+            items.push(data[i].name);
+
+            items.push(data[i].description);
+          });
+
+          $.each(nodes, function(j, val) {
+            if (val.id == id) {
+              console.log(nodes[j]);
+              $("#titleNode").html((j+1)+": "+items[0]);
+            }
+          })
+
+          $("#links").html(items[1]);
+        });
+      }
+
+      function createNetwork() {
+        var container = document.getElementById('nodes');
+        var data = {
+          nodes: nodes,
+          edges: edges
+        };
+        var options = {
+          nodes: {
+            borderWidth:4,
+            icon: {
+              size:30
+            },
+            size:30,
+  	      color: {
+              border: '#222222',
+              background: '#666666'
+            },
+            font:{color:'#000000'}
+          },
+          edges: {
+            color: 'lightgray'
+          },
+          layout: {
+            hierarchical: {
+              direction: "LR"
+            }
+          }
+        };
+        console.log(nodes);
+        network = new vis.Network(container, data, options);
+        console.log("Network created");
+        network.on("selectNode", function (obj) {
+          getNodeById2(obj.nodes[0]);
+        });
+
+        getNodeById2(nodes[0].id);
+      }
+
+      // Called when the Visualization API is loaded.
+      function draw(nodesList) {
+        // create people.
+        // value corresponds with the age of the person
+        var DIR = 'img/indonesia/';
+
+        $.each(nodesList.split(" "), function(index, idNode) {
+          nodes.push({id: idNode,  shape: 'circularImage', image: 'usa.png', label: "zefdf"});
+          $.getJSON( ("https://hackathon.meteors.io/nodes/"+idNode), function( data ) {
+            $.each(data, function(i) {
+              console.log(data[i]);
+              // Find the good node
+              $.each(nodes, function(j, val) {
+                if (val.id == data[i].id) {
+                  nodes[j].label = data[i].name;
+                  nodes[j].number = j;
+                  console.log(nodes[j]);
+                }
+              })
+            });
+            nodesFlags.push(true);
+            if (nodesFlags.length == nodes.length) {
+              createNetwork();
+            }
+          });
+        });
+        // create connections between people
+        if (nodes.length > 1) {
+          for (var i = 1; i < nodes.length; i++) {
+            edges.push({from: parseInt(nodes[i-1].id), to: parseInt(nodes[i].id), arrows:'to'})
+          }
+        }
+      }
     </script>
   </body>
 </html>
