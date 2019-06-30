@@ -66,6 +66,8 @@ function getNodeById(id) {
 }
 
 
+
+
 function numberOfStars(rating, DOM)
 {
   var chain = [];

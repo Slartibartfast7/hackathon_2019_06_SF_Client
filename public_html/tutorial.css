@@ -54,6 +54,14 @@
   display: none;
 }
 
+#mynetwork {
+  width: 800px;
+  height: 800px;
+  border: 1px solid lightgray;
+  background-color:#333333;
+}
+
+
 main {
   display: grid;
   grid-template: "title title title titleNode"
