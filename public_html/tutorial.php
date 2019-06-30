@@ -29,6 +29,13 @@
       <p id="difficulty"></p>
       <p id="links"></p>
       <div id="nodes"></div>
+      <div id="drop_file_zone" ondrop="upload_file(event)" ondragover="return false">
+        <div id="drag_upload_file">
+          <p>Upload your work here</p>
+          <p><input type="hidden" value="Select File" onclick="file_explorer();"></p>
+          <input type="file" id="selectfile">
+        </div>
+      </div>
       <a id="back" href="index.php"></a>
     </main>
 
@@ -61,6 +68,40 @@
     .fail(function() {
       console.log( "error" );
     });
+    </script>
+    <script type="text/javascript">
+      var fileobj;
+      function upload_file(e) {
+        e.preventDefault();
+        fileobj = e.dataTransfer.files[0];
+        ajax_file_upload(fileobj);
+      }
+
+      function file_explorer() {
+        document.getElementById('selectfile').click();
+        document.getElementById('selectfile').onchange = function() {
+            fileobj = document.getElementById('selectfile').files[0];
+          ajax_file_upload(fileobj);
+        };
+      }
+
+      function ajax_file_upload(file_obj) {
+        if(file_obj != undefined) {
+            var form_data = new FormData();
+            form_data.append('file', file_obj);
+          $.ajax({
+            type: 'POST',
+            url: 'ajax.php',
+            contentType: false,
+            processData: false,
+            data: form_data,
+            success:function(response) {
+              alert(response);
+              $('#selectfile').val('');
+            }
+          });
+        }
+      }
     </script>
   </body>
 </html>

@@ -27,10 +27,31 @@
 #nodes {
   grid-area: nodes;
 }
+#drop_file_zone {
+  grid-area: drop_file_zone;
+}
 #back {
   grid-area: back;
   justify-self: center;
   font-size: 1.3em;
+}
+
+#drop_file_zone {
+  justify-self: center;
+  align-self: center;
+  border: #999 3px dashed;
+  padding: 5px;
+  font-size: 1em;
+}
+#drag_upload_file {
+  width:50%;
+  margin:0 auto;
+}
+#drag_upload_file p {
+  text-align: center;
+}
+#drag_upload_file #selectfile {
+  display: none;
 }
 
 main {
@@ -38,8 +59,8 @@ main {
   grid-template: "title title title titleNode"
                  "description description description links"
                  "author ratings difficulty links"
-                 ". . . links"
-                 " . nodes nodes nodes"
+                 " . . . links"
+                 "drop_file_zone nodes nodes nodes"
                  "back nodes nodes nodes";
   grid-template-columns: 1fr 1fr 1fr 4fr;
 }
