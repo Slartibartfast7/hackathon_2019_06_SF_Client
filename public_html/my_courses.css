@@ -1,0 +1,16 @@
+#container {
+  text-align: center;
+}
+h2 {
+  margin: 0;
+}
+main {
+  margin-top: 3em;
+  max-width: 1100px;
+  text-align: justify;
+  display: inline-block;
+}
+main a {
+  color: #333;
+  text-decoration: none;
+}

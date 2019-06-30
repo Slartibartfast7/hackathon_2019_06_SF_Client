@@ -1,0 +1,45 @@
+#title {
+  grid-area: title;
+  align-self: center;
+  justify-self: center;
+}
+#ratings {
+  display: grid;
+  grid-area: ratings;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+#links {
+  grid-area: links;
+}
+#description {
+  grid-area: description;
+  align-self: center;
+  justify-self: center;
+}
+#author {
+  grid-area: author;
+  justify-self: center;
+  font-size: 1.3em;
+}
+#difficulty {
+  grid-area: difficulty;
+}
+#nodes {
+  grid-area: nodes;
+}
+#back {
+  grid-area: back;
+  justify-self: center;
+  font-size: 1.3em;
+}
+
+main {
+  display: grid;
+  grid-template: "title title title titleNode"
+                 "description description description links"
+                 "author ratings difficulty links"
+                 ". . . links"
+                 " . nodes nodes nodes"
+                 "back nodes nodes nodes";
+  grid-template-columns: 1fr 1fr 1fr 4fr;
+}

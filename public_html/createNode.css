@@ -1,0 +1,30 @@
+#name {
+  grid-area: name;
+}
+#duration {
+  grid-area: duration;
+}
+#difficulty {
+  grid-area: difficulty;
+}
+#color {
+  grid-area: color;
+}
+#shortDesc {
+  grid-area: shortDesc;
+}
+#links {
+  grid-area: links;
+}
+#submitButton {
+  grid-area: submitButton;
+}
+
+form {
+  max-width: 900px;
+  display: grid;
+  grid-template: "shortDesc shortDesc name name"
+                 "shortDesc shortDesc difficulty color"
+                 "links links duration submitButton"
+                 "links links . ."
+}

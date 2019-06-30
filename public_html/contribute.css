@@ -1,0 +1,9 @@
+main {
+  max-width: 900px;
+  display: inline-block;
+  text-align: justify;
+}
+#container {
+  padding: 50px;
+  text-align: center;
+}

@@ -1,0 +1,68 @@
+main {
+  display: grid;
+  min-height: 100vh;
+}
+
+body {
+  margin: 0;
+  font-family: "Roboto";
+  color: #333;
+}
+#topbar {
+  background-color: #689F38;
+  height: 2em;
+}
+#titleTopbar {
+  grid-area: titleTopbar;
+  justify-self: end;
+  align-self: center;
+}
+#cyphaiTopbar {
+  grid-area: cyphaiTopbar;
+  justify-self: start;
+  align-self: end;
+}
+#language {
+  justify-self: end;
+  grid-area: language;
+}
+#profileTopbar {
+  justify-self: start;
+  grid-area: profileTopbar;
+}
+header {
+  background-color: #8BC34A;
+  color: #FFFFFF;
+  padding: 30px 0 20px 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-column-gap: 10px;
+  grid-template-areas: "titleTopbar titleTopbar cyphaiTopbar . . . language profileTopbar";
+}
+header h1 {
+  margin: 0;
+  font-size: 2.2em;
+}
+header img {
+  max-height: 2em;
+}
+header a {
+  text-decoration: none;
+  color: #FFF;
+}
+
+#rightTopbar {
+  display: flex;
+  flex-direction: row;
+  margin: 2em;
+}
+
+footer {
+  color: #FFF;
+  background-color: #333;
+  padding: 50px;
+  font-size: 0.7em;
+}
+#arrowTopbar {
+  height: 25%;
+}
